@@ -6,24 +6,27 @@ import lombok.*;
 
 import java.util.HashSet;
 
+import static com.example.backend.Enums.ApplicationRole.NORMAL_USER;
+
 @Entity
 @Table(name = "ApplicationUser")
 @Setter
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
 public class ApplicationUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userID;
 
-    @Column(name = "username")
+    @Column(name = "firstname")
     @NonNull
-    private String username;
+    private String firstname;
 
     @Column(name = "lastname")
     private String lastname;
+
+    @Column(name = "email")
+    private String email;
 
     @NonNull
     private String password;
@@ -36,4 +39,12 @@ public class ApplicationUser {
     @CollectionTable(name = "mapUsersRoles")
     @Column(name = "Roles")
     private HashSet<ApplicationRole> roles ;
+
+    public ApplicationUser(@NonNull String firstname, String lastname, String email, @NonNull String password) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.password = password;
+        this.roles.add(NORMAL_USER);
+    }
 }
