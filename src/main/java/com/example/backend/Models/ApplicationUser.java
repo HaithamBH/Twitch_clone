@@ -1,4 +1,4 @@
-package com.example.backend.models;
+package com.example.backend.Models;
 
 import com.example.backend.Enums.ApplicationRole;
 import jakarta.persistence.*;
