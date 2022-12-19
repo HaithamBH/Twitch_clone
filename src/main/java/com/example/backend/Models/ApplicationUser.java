@@ -19,8 +19,10 @@ public class ApplicationUser {
     private Long userID;
 
     @Column(name = "username")
+    @NonNull
     private String username;
 
+    @Column(name = "lastname")
     private String lastname;
 
     @NonNull
