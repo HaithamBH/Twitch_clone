@@ -25,7 +25,7 @@ public class ApplicationUser {
     @Column(name = "lastname")
     private String lastname;
 
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     private String email;
 
     @NonNull
@@ -38,13 +38,13 @@ public class ApplicationUser {
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "mapUsersRoles")
     @Column(name = "Roles")
-    private HashSet<ApplicationRole> roles ;
+    private HashSet<String> roles ;
 
     public ApplicationUser(@NonNull String firstname, String lastname, String email, @NonNull String password) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.password = password;
-        this.roles.add(NORMAL_USER);
+        this.roles.add(NORMAL_USER.name());
     }
 }
