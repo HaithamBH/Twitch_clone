@@ -20,7 +20,12 @@ public class UserController {
     @PostMapping("/register")
     public void UserRegister(@RequestBody UserRegisterForm userRegisterForm){
         if (userRegisterForm.validUserRegistration()){
-
+            ApplicationUser user = new ApplicationUser(
+                    userRegisterForm.getFirstname(),
+                    userRegisterForm.getLastname(),
+                    userRegisterForm.getEmail(),
+                    userRegisterForm.getPassword()
+            );
         }
     }
 }
